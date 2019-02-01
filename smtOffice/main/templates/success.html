@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Order success</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script type="text/javascript">
+        function back(){
+              history.go(-1);
+        }
+    </script>
+  </head>
+  <body>
+    <div class="col-md-12 text-center">
+
+      <h1>Ваш заказ номер: </h1>
+    <div style ="font-size: 10em"> {{orderNumber}}</div>
+      <h1>готов!!!</h1>
+      <h4>{{param}}</h4>
+
+      <h4>остаток на складе: {{stock_balance}}</h4>
+    </div>
+      <div class="col-md-12 text-center">
+          <button class="btn btn-primary" onclick="back()">Назад</button>
+     </div>
+
+  </body>
+</html>
