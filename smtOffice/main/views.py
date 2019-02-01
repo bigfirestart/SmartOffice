@@ -12,12 +12,12 @@ def buy(request):
     product = models.Product.objects.get(name = productName)
     product.stock_balance-=1
     product.save()
-    buy =models.Buy()
-    buy.buyer = User.objects.get(username = 'Вова')
-    buy.product = product
-    buy.orderNumber = buy.getOrderNumber()
-    buy.save()
-    return render(request,'success.html',{'param':productName , 'stock_balance': product.stock_balance, 'orderNumber': buy.orderNumber})
-def showBuys(request):
-    buys=models.Buy.objects.all()
-    return render(request,'buys.html',{'buys': buys})
+    order =models.Order()
+    order.buyer = User.objects.get(username = 'Вова')
+    order.product = product
+    order.orderNumber = order.getOrderNumber()
+    order.save()
+    return render(request,'success.html',{'param':productName , 'stock_balance': product.stock_balance, 'orderNumber': order.orderNumber})
+def showOrders(request):
+    buys=models.Order.objects.all()
+    return render(request,'orders.html',{'buys': buys})

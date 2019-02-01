@@ -8,7 +8,7 @@ class Product(models.Model):
     stock_balance = models.IntegerField()
     def __str__(self):
         return self.name
-class Buy(models.Model):
+class Order(models.Model):
     buyer = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     product = models.ForeignKey('Product', on_delete=models.CASCADE)
     orderNumber = models.IntegerField(default= 0)
@@ -16,7 +16,7 @@ class Buy(models.Model):
     def __str__(self):
         return self.buyer.username
     def getOrderNumber(self):
-        num =Buy.objects.order_by()
+        num =Order.objects.order_by()
         if len(num)>0:
             return num[len(num)-1].orderNumber+1
         else:
