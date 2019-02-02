@@ -16,8 +16,12 @@ def buy(request):
     order.buyer = User.objects.all()[1]
     order.product = product
     order.orderNumber = order.getOrderNumber()
+    order.stock_balance = product.stock_balance
     order.save()
     return render(request,'success.html',{'param':productName , 'stock_balance': product.stock_balance, 'orderNumber': order.orderNumber})
 def showOrders(request):
     buys=models.Order.objects.all()
-    return render(request,'orders.html',{'buys': buys})
+    sumPrice=0
+    for buy in buys:
+        sumPrice+=buy.product.price
+    return render(request,'orders.html',{'buys': buys,'price': sumPrice})
