@@ -12,7 +12,7 @@ class Order(models.Model):
     buyer = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     product = models.ForeignKey('Product', on_delete=models.CASCADE)
     orderNumber = models.IntegerField(default= 0)
-    date = models.DateTimeField(default=timezone.now())
+    date = models.DateTimeField(default=timezone.now)
     def __str__(self):
         return self.buyer.username
     def getOrderNumber(self):

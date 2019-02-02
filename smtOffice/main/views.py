@@ -13,7 +13,7 @@ def buy(request):
     product.stock_balance-=1
     product.save()
     order =models.Order()
-    order.buyer = User.objects.get(username = 'Вова')
+    order.buyer = User.objects.all()[1]
     order.product = product
     order.orderNumber = order.getOrderNumber()
     order.save()
